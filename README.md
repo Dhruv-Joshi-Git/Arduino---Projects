@@ -13,7 +13,7 @@ Personal Arduino Uno 3 Projects
 
 **Description:**  
 This project reads real-time temperature and humidity data using the DHT11 sensor and displays it on a 16x2 LCD via I2C. A single pushbutton allows the user to toggle between Celsius and Fahrenheit readings and a Bar graph. The display also shows system uptime in seconds. Required code above!
-![Image](images/IMG_8675.JPG)
+![Image](images/IMG_8676.JPG)
 
 
 
