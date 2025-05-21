@@ -1,7 +1,7 @@
 # Arduino---Projects
 Personal Arduino Uno 3 Projects 
 
-### 🌡️ Temperature and Humidity Display with Unit Toggle & Graphing
+### Temperature and Humidity Display with Unit Toggle & Graphing
 
 **Components Used:**
 - Arduino Uno R3  
