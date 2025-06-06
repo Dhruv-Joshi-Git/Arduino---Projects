@@ -1,9 +1,10 @@
 # Arduino---Projects
 Personal Arduino Uno 3 Projects 
 
-### Arduino Uno Smart Car Build : June 2025 
+### Robot Car Build : June 2025 
 
 **Description:**  
+
 This project implements the code for an IR-controlled robotic vehicle capable of multiple modes of operation, such as line tracking, obstacle avoidance, hand guided navigation, and remote-controlled movement. The vehicle uses various sensors and actuators to achieve autonomous and manual control.
 
 **Components Used:**
@@ -31,7 +32,7 @@ This project implements the code for an IR-controlled robotic vehicle capable of
 **Setup & Execution:**
 - Assemble the car using the chosen chassis and peripherals in an optimal configuration. Refer to the provided pinout diagram or a similar guide for wiring instructions.
 - Run the sketch_smartcar.ino file found above in the arduino IDE.
-- Videos of functionality above.
+- Image of car, and videos of functionality [Images and Videos](./Images and Videos)
 
 | Button   | Hex   | Description                                |
 |----------|-------|--------------------------------------------|
@@ -53,7 +54,6 @@ This project implements the code for an IR-controlled robotic vehicle capable of
 | FORWARD  | 0x43  | Activates ultrasonic obstacle avoidance mode |
 | BACKWARD | 0x40  | Activates IR obstacle avoidance mode       |
 
-
 Note: Auto Drive is the fully functioning mode, while the IR/ultrasonic obstacle avoidance modes are sub functions required to run Auto Drive. 
 
 ### Temperature and Humidity Display with Unit Toggle & Graphing : May 2025 
@@ -68,7 +68,6 @@ Note: Auto Drive is the fully functioning mode, while the IR/ultrasonic obstacle
 
 **Description:**  
 This project reads real-time temperature and humidity data using the DHT11 sensor and displays it on a 16x2 LCD via I2C. A single pushbutton allows the user to toggle between Celsius and Fahrenheit readings and a Bar graph. The display also shows system uptime in seconds. Required code above!
-![Image](images/IMG_8676.JPG)
 
 **Features:**
 - Real-time measurement of temperature and humidity  
