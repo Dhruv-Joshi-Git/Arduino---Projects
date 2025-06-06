@@ -76,4 +76,15 @@ This project reads real-time temperature and humidity data using the DHT11 senso
 - Uptime display (in seconds)  
 - Reliable button handling with software debouncing  
 
+### Simon Says Game : May 2025 
+Project emulates the popular game simon says!
+
+**Components Used:**
+- Arduino Uno 3
+- BreadBoard
+- 4 LED's
+- 4 PushButtons
+- Jumper Wires
+- I2C Display
+- Piezo Buzzer
 
