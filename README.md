@@ -33,25 +33,26 @@ This project implements the code for an IR-controlled robotic vehicle capable of
 - Run the sketch_smartcar.ino file found above in the arduino IDE.
 - Videos of functionality above.
 
-Button      Hex    Description
-----------------------------------------------
-0           0x16   Reset button, will stop all movements
-1           0x0C   Move left forward
-2           0x18   Move forward
-3           0x5E   Move right forward
-4           0x08   Turn left
-5           0x1C   Reserved for potential functionality
-6           0x5A   Turn right
-7           0x42   Backward-left movement
-8           0x52   Move backward
-9           0x4A   Backward-right movement
-+           0x09   Increase motor speed by 25 units
--           0x15   Decrease motor speed by 25 units
-EQ          0x07   Activates following mode
-U/SD        0x0D   Activates autonomous driving mode
-CYCLE       0x19   Activates line-tracking mode
-FORWARD     0x43   Activates ultrasonic obstacle avoidance mode
-BACKWARD    0x40   Activates IR obstacle avoidance mode
+| Button   | Hex   | Description                                |
+|----------|-------|--------------------------------------------|
+| 0        | 0x16  | Reset button, will stop all movements      |
+| 1        | 0x0C  | Move left forward                           |
+| 2        | 0x18  | Move forward                               |
+| 3        | 0x5E  | Move right forward                         |
+| 4        | 0x08  | Turn left                                 |
+| 5        | 0x1C  | Reserved for potential functionality       |
+| 6        | 0x5A  | Turn right                                |
+| 7        | 0x42  | Backward-left movement                     |
+| 8        | 0x52  | Move backward                             |
+| 9        | 0x4A  | Backward-right movement                    |
+| +        | 0x09  | Increase motor speed by 25 units           |
+| -        | 0x15  | Decrease motor speed by 25 units           |
+| EQ       | 0x07  | Activates following mode                    |
+| U/SD     | 0x0D  | Activates autonomous driving mode          |
+| CYCLE    | 0x19  | Activates line-tracking mode                |
+| FORWARD  | 0x43  | Activates ultrasonic obstacle avoidance mode |
+| BACKWARD | 0x40  | Activates IR obstacle avoidance mode       |
+
 
 Note: Auto Drive is the fully functioning mode, while the IR/ultrasonic obstacle avoidance modes are sub functions required to run Auto Drive. 
 
