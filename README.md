@@ -4,7 +4,6 @@ Personal Arduino Uno 3 Projects
 ### Robot Car Build : June 2025 
 
 **Description:**  
-
 This project implements the code for an IR-controlled robotic vehicle capable of multiple modes of operation, such as line tracking, obstacle avoidance, hand guided navigation, and remote-controlled movement. The vehicle uses various sensors and actuators to achieve autonomous and manual control.
 
 **Components Used:**
@@ -67,7 +66,7 @@ Note: Auto Drive is the fully functioning mode, while the IR/ultrasonic obstacle
 - Jumper Wires  
 
 **Description:**  
-This project reads real-time temperature and humidity data using the DHT11 sensor and displays it on a 16x2 LCD via I2C. A single pushbutton allows the user to toggle between Celsius and Fahrenheit readings and a Bar graph. The display also shows system uptime in seconds. Required code above!
+This project reads real-time temperature and humidity data using the DHT11 sensor and displays it on a 16x2 LCD via I2C. A single pushbutton allows the user to toggle between Celsius and Fahrenheit readings and a Bar graph. The display also shows system uptime in seconds. Required code above![Images and Videos](./Images%20and%20Videos)
 
 **Features:**
 - Real-time measurement of temperature and humidity  
