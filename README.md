@@ -32,7 +32,7 @@ This project implements the code for an IR-controlled robotic vehicle capable of
 **Setup & Execution:**
 - Assemble the car using the chosen chassis and peripherals in an optimal configuration. Refer to the provided pinout diagram or a similar guide for wiring instructions.
 - Run the sketch_smartcar.ino file found above in the arduino IDE.
-- Image of car, and videos of functionality [Images and Videos](./Images and Videos)
+- Image of car, and videos of functionality [Images and Videos](./Images%20and%20Videos)
 
 | Button   | Hex   | Description                                |
 |----------|-------|--------------------------------------------|
