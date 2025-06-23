@@ -14,6 +14,13 @@ const int trigPin = 3;
 const int rightIR = 7;
 const int leftIR = 8;
 const int lineTrackPin = 2;
+const int buzzerPin = 11; // Active buzzer connected here
+
+// Security System 
+String passcode = "1234";
+String enteredCode = "";
+int attempts = 3;
+bool unlocked = false;
 
 // Calibration values for motor adjustments
 float leftOffset = 1.0;         // Left motor speed offset
@@ -44,6 +51,9 @@ void setup() {
 
   // Line Track Module
   pinMode(lineTrackPin, INPUT);
+  
+  // Active - Buzzer 
+  pinMode(buzzerPin, OUTPUT);
 
   // IR remote
   IrReceiver.begin(IR_RECEIVE_PIN, ENABLE_LED_FEEDBACK);  // Start the IR receiver // Start the receiver
@@ -54,6 +64,53 @@ void setup() {
 // Main loop to handle different modes and IR input
 void loop() {
 
+  if (!unlocked) {
+    if (IrReceiver.decode()) {
+      String key = decodeKeyValue(IrReceiver.decodedIRData.command);
+
+      if (key == "POWER") {
+        resetLock();  // Owner can reset the system
+      } 
+      else if (key.length() == 1 && key[0] >= '0' && key[0] <= '9') {
+        enteredCode += key;
+        Serial.println("Entered: " + enteredCode);
+
+        if (enteredCode.length() == 4) {
+          if (enteredCode == passcode) {
+            unlocked = true;
+            Serial.println("Access Granted");
+          } 
+          else {
+            attempts--;
+            Serial.println("Access Denied. Attempts left: " + String(attempts));
+            beepError();
+            if (attempts <= 0) {
+              Serial.println("Too many wrong attempts. Locked until reset.");
+
+              while (true) {
+                beepError();
+
+                if (IrReceiver.decode()) {
+                  String key = decodeKeyValue(IrReceiver.decodedIRData.command);
+                  if (key == "POWER") {
+                    resetLock();
+                    IrReceiver.resume();
+                    break;  // exit the while loop, unlock system
+                  }
+                    IrReceiver.resume();
+                }
+              }
+            }
+
+        }
+          enteredCode = "";
+        }
+      }
+
+      IrReceiver.resume();
+    }
+  return;  // Skip rest of loop if still locked
+  }
   if (IrReceiver.decode()) {
     //    Serial.println(results.value,HEX);
     String key = decodeKeyValue(IrReceiver.decodedIRData.command);
@@ -93,6 +150,9 @@ void loop() {
       else if (key == "8") {
         moveBackward(speed);
         delay(1000);
+      }
+      else if( key == "POWER") { 
+        resetLock();
       } 
       else if (key == "CYCLE") {
         flag = "LINE";
@@ -239,23 +299,54 @@ void stopMove() {
   analogWrite(B_1A, 0);
 }
 
+void beepOn() {
+  digitalWrite(buzzerPin, HIGH);
+}
+
+void beepOff() {
+  digitalWrite(buzzerPin, LOW);
+}
+
+void beepError() {
+  for (int i = 0; i < 3; i++) {
+    beepOn(); delay(200);
+    beepOff(); delay(200);
+  }
+}
+
+void resetLock() {
+  attempts = 3;
+  unlocked = false;
+  enteredCode = "";
+  Serial.println("Lock reset");
+}
+
 // Function for each mode 
 
 void AutoDrive(int speed) {
   int left = digitalRead(leftIR);  // 0: Obstructed   1: Empty
   int right = digitalRead(rightIR);
 
+  float distance = readSensorData();
+  Serial.println(distance);
+
+  // Buzzer on if object is too close (<= 2 cm or zero reading)
+  if (distance <= 2) {
+    beepOn();
+    stopMove();
+    delay(1000);
+    beepOff();
+  }
+
   if (!left && right) {
     moveForward(120);
     delay(1000);
-   // backLeft(speed);
-      backRight(speed);
-      delay(1000);
+    backRight(speed);
+    delay(1000);
   } 
   else if (left && !right) {
     moveForward(120);
     delay(1000);
-    //backRight(speed);
     backLeft(speed);
     delay(1000);
   } 
@@ -263,17 +354,15 @@ void AutoDrive(int speed) {
     moveForward(speed);
   } 
   else {
-    float distance = readSensorData();
-    Serial.println(distance);
     if (distance > 50) {  // Safe
       moveBackward(200);  
     } 
-    else if (distance < 10 && distance > 2) {  // Attention
+    else if (distance < 10 && distance > 2) {  // Attention range
       moveForward(200); 
       delay(1000);
       backLeft(150);
       delay(500);
-    } 
+    }
     else {
       moveBackward(120);
     }
