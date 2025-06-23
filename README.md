@@ -66,7 +66,7 @@ This project was developed through hands-on experimentation and integration of m
 ---
 
 **License:**  
-MIT License – Feel free to fork and build upon it. Attribution appreciated if reused.
+MIT License – Feel free to fork and build upon it. 
 
 
 ### Temperature and Humidity Display with Unit Toggle & Graphing : May 2025 
