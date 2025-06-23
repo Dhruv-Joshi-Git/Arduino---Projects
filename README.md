@@ -13,6 +13,7 @@ This project implements the code for an IR-controlled robotic vehicle capable of
 - IR Remote Control (
 - Ultrasonic Sensor (HC-SR04)
 - Line Tracking Module
+- Active Buzzer 
 - IR Obstacle Sensors (2 sensors for left and right detection)
 - DC Motors (2 or 4, depending on your vehicle design
 - Universal Wheel 
@@ -22,6 +23,7 @@ This project implements the code for an IR-controlled robotic vehicle capable of
 - Chassis (for assembling the vehicle)
 
 **Features:**
+- On startup, the car remains locked and non-functional until a correct 4-digit passcode is entered using the IR remote. Incorrect attempts trigger audible warnings via the buzzer. The system can be hard-reset using the POWER button.
 - Remote Control: Operate the robot using an IR remote with predefined key mappings for movements and mode selection.
 - Line Tracking: Follows a line using a line-tracking module.(Automated)
 - Auto Drive/Obstacle Avoidance: The car will drive fully automated avoiding obstacles using the infrared sensors and ultrasonic sensor.
@@ -52,8 +54,20 @@ This project implements the code for an IR-controlled robotic vehicle capable of
 | CYCLE    | 0x19  | Activates line-tracking mode                |
 | FORWARD  | 0x43  | Activates ultrasonic obstacle avoidance mode |
 | BACKWARD | 0x40  | Activates IR obstacle avoidance mode       |
+| POWER    | 0x45  | Resets or re-locks the system                 |
 
 Note: Auto Drive is the fully functioning mode, while the IR/ultrasonic obstacle avoidance modes are sub functions required to run Auto Drive. 
+
+---
+
+**Acknowledgment & Learning Reference:**  
+This project was developed through hands-on experimentation and integration of multiple concepts. Some structural guidance and implementation ideas were inspired by tutorials from **SunFounder**. The logic and functionality were extended beyond the referenced materials to implement features like the security system, buzzer feedback, and additional control refinements. This project reflects an understanding and adaptation of the learned material—not a direct copy.
+
+---
+
+**License:**  
+MIT License – Feel free to fork and build upon it. Attribution appreciated if reused.
+
 
 ### Temperature and Humidity Display with Unit Toggle & Graphing : May 2025 
 
